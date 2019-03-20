@@ -1,0 +1,14 @@
+# CSharp
+**/.vscode/
+**/bin/
+**/obj/
+**/Properties/
+**/*.csproj
+**/*.sln
+**/*.suo
+**/*.resx
+
+# IntelliJ
+**/.idea/
+**/out
+**/*.iml

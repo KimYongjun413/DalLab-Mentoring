@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <title>Calculator Made By D6</title>
+    <script src="js/jquery.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 5px 10px;
+            text-align: center;
+        }
+
+        input {
+            border: none;
+            text-align: right;
+        }
+
+        input:focus {
+            outline: none;
+        }     
+        
+    </style>
+    <script>
+        var numberClicked = false;
+        function add(char) {
+            if(numberClicked == false) {
+                if(isNaN(char) == true) {
+
+                } else {
+                    document.getElementById('display').value += char;
+                }
+            } else {
+                document.getElementById('display').value += char;
+            }
+
+            if(isNaN(char) == true) {
+                numberClicked = false;
+            } else {
+                numberClicked = true;
+            }
+        }
+        function calculate() {            
+            var display = document.getElementById('display');            
+            var re = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]|[a-z]|[\{\}\[\]?.,;:|\)~`!^_<>@\#$%&\\\=\(\'\"]/gi;
+            var newFormula = display.value.replace(re,'');
+            document.getElementById('display').value = newFormula;
+
+            if(newFormula == ""){
+                reset();
+            }
+
+            var result = eval(display.value);
+            if(typeof result != "undefined") {
+                document.getElementById('result').value = result;
+            }
+        }
+        function reset() {
+            document.getElementById('display').value = "";
+            document.getElementById('result').value = "";
+        }
+        function keyup() {            
+                calculate();                        
+        }        
+    </script>
+</head>
+
+<body>
+    <table border="1">
+        <tr>
+            <td colspan="4">
+                <input type="text" id="display" onkeyup="keyup();">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <input type="text" id="result" readonly >
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" onclick="reset()">AC</td>
+            <td onclick="add('/')">/</td>
+        </tr>
+        <tr>
+            <td onclick="add(7)">7</td>
+            <td onclick="add(8)">8</td>
+            <td onclick="add(9)">9</td>
+            <td onclick="add('*')">*</td>
+        </tr>
+        <tr>
+            <td onclick="add(4)">4</td>
+            <td onclick="add(5)">5</td>
+            <td onclick="add(6)">6</td>
+            <td onclick="add('-')">-</td>
+        </tr>
+        <tr>
+            <td onclick="add(1)">1</td>
+            <td onclick="add(2)">2</td>
+            <td onclick="add(3)">3</td>
+            <td onclick="add('+')">+</td>
+        </tr>
+        <tr>
+            <td colspan="2" onclick="add(0)">0</td>
+            <td onclick="add('.')">.</td>
+            <td onclick="calculate()">=</td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
