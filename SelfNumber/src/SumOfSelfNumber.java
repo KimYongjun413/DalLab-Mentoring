@@ -2,8 +2,10 @@ import java.util.*;
 
 public class SumOfSelfNumber {
     public static void main(String[] args) {
-        System.out.print("공사 중 입니다.");
-        selfNumbers(5);
+        System.out.printf("자연수 몇 까지 Self Number의 합을 구할까요? : ");
+        Scanner scanner = new Scanner(System.in);
+        int number = scanner.nextInt();
+        System.out.println("\nSelf Number의 합은 " + sum(selfNumbers(number)) + "입니다.");
     }
 
     public static int[] generators(int n) {
@@ -41,10 +43,18 @@ public class SumOfSelfNumber {
         }
         return convertIntegers(selfNumberstList);
     }
-    public static boolean contains(int[] arr, int item) {
-        for (int n : arr) {
-            if (item == n) return true;
+    public static boolean contains(int[] array, int item) {
+        for (int number : array) {
+            if (item == number) return true;
         }
         return false;
+    }
+
+    public static int sum(int[] array) {
+        int result = 0;
+        for(int number : array) {
+            result += number;
+        }
+        return result;
     }
 }

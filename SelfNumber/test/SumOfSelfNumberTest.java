@@ -40,4 +40,15 @@ public class SumOfSelfNumberTest {
         assertTrue(naturalNumbers.contains(naturalNumbers.selfNumbers(50), 31));
         assertTrue(naturalNumbers.contains(naturalNumbers.selfNumbers(50), 42));
     }
+
+    @Test
+    public void sum() {
+        assertEquals(10, naturalNumbers.sum(new int[] {2,8}));
+        assertEquals(15, naturalNumbers.sum(new int[] {1,2,3,4,5}));
+        assertEquals(55, naturalNumbers.sum(new int[] {1,2,3,4,5,6,7,8,9,10}));
+
+        assertEquals(1, naturalNumbers.sum(naturalNumbers.selfNumbers(2)));
+        assertEquals(4, naturalNumbers.sum(naturalNumbers.selfNumbers(5)));
+        assertEquals(493, naturalNumbers.sum(naturalNumbers.selfNumbers(100)));
+    }
 }
