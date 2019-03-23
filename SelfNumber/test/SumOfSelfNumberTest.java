@@ -21,4 +21,23 @@ public class SumOfSelfNumberTest {
         assertEquals(5030, naturalNumbers.d(4999));
     }
 
+    @Test
+    public void selfNumbers() {
+        assertArrayEquals(new int[] {1}, naturalNumbers.selfNumbers(2));
+        assertArrayEquals(new int[] {1, 3}, naturalNumbers.selfNumbers(5));
+        assertArrayEquals(new int[] {1, 3, 5, 7, 9}, naturalNumbers.selfNumbers(10));
+        assertArrayEquals(new int[] {1, 3, 5, 7, 9, 20, 31, 42}, naturalNumbers.selfNumbers(50));
+        assertArrayEquals(new int[] {1, 3, 5, 7, 9, 20, 31, 42, 53, 64, 75, 86, 97}, naturalNumbers.selfNumbers(100));
+    }
+
+    @Test
+    public void contains() {
+        assertTrue(naturalNumbers.contains(new int[] {1, 2, 3, 4}, 1));
+        assertTrue(naturalNumbers.contains(new int[] {1, 2, 3, 4}, 4));
+
+        assertTrue(naturalNumbers.contains(naturalNumbers.selfNumbers(5), 1));
+        assertTrue(naturalNumbers.contains(naturalNumbers.selfNumbers(5), 3));
+        assertTrue(naturalNumbers.contains(naturalNumbers.selfNumbers(50), 31));
+        assertTrue(naturalNumbers.contains(naturalNumbers.selfNumbers(50), 42));
+    }
 }
