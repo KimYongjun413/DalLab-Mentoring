@@ -1,8 +1,9 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class SumOfSelfNumber {
     public static void main(String[] args) {
-        System.out.printf("자연수 몇 까지 Self Number의 합을 구할까요? : ");
+        System.out.print("자연수 몇 까지 Self Number의 합을 구할까요? : ");
         Scanner scanner = new Scanner(System.in);
         int number = scanner.nextInt();
         System.out.println("\nSelf Number의 합은 " + sum(selfNumbers(number)) + "입니다.");
@@ -34,14 +35,14 @@ public class SumOfSelfNumber {
     }
 
     public static int[] selfNumbers(int n) {
-        ArrayList<Integer> selfNumberstList = new ArrayList<>();
+        ArrayList<Integer> selfNumbersList = new ArrayList<>();
         int[] generatorsArray = generators(n);
         for(int i=1; i < n; i++) {
             if( !contains(generatorsArray,i) ) {
-                selfNumberstList.add((i));
+                selfNumbersList.add((i));
             }
         }
-        return convertIntegers(selfNumberstList);
+        return convertIntegers(selfNumbersList);
     }
     public static boolean contains(int[] array, int item) {
         for (int number : array) {
